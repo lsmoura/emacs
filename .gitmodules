@@ -1,0 +1,15 @@
+[submodule "themes/color-theme-tangotango"]
+	path = themes/color-theme-tangotango
+	url = https://github.com/juba/color-theme-tangotango.git
+[submodule "plugins/js2-mode"]
+	path = plugins/js2-mode
+	url = https://github.com/mooz/js2-mode.git
+[submodule "plugins/auto-complete"]
+	path = plugins/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule "plugins/yasnippet"]
+	path = plugins/yasnippet
+	url = https://github.com/joaotavora/yasnippet.git
+[submodule "plugins/popup-el"]
+	path = plugins/popup-el
+	url = https://github.com/auto-complete/popup-el.git
