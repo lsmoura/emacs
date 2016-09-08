@@ -13,3 +13,6 @@
 [submodule "plugins/popup-el"]
 	path = plugins/popup-el
 	url = https://github.com/auto-complete/popup-el.git
+[submodule "plugins/org-mode"]
+	path = plugins/org-mode
+	url = git://orgmode.org/org-mode.git

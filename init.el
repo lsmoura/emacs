@@ -24,13 +24,13 @@
       backup-by-copying   t) ;; Copy all files, don't rename them.
 
 ; Backup save location
-(setq backup-directory-alist '(("" . (concat +emacs-backup-dir+ "/per-save"))))
+(setq backup-directory-alist `(("" . ,(concat +emacs-backup-dir+ "/per-save"))))
 (defun force-backup-of-buffer ()
   ;; Make a special "per session" backup at the first save of each
   ;; emacs session.
   (when (not buffer-backed-up)
     ;; Override the default parameters for per-session backups.
-    (let ((backup-directory-alist '(("" . (concat +emacs-backup-dir+ "/per-session"))))
+    (let ((backup-directory-alist `(("" . ,(concat +emacs-backup-dir+ "/per-session"))))
 	  (kept-new-versions 3))
       (backup-buffer)))
   ;; Make a "per save" backup on each save.  The first save results in
@@ -39,6 +39,10 @@
   (let ((buffer-backed-up nil))
     (backup-buffer)))
 (add-hook 'before-save-hook  'force-backup-of-buffer)
+
+;; Org-mode
+(add-to-list 'load-path (concat +emacs-lib-dir+ "/org-mode/lisp"))
+(require 'org)
 
 ;; Move lines
 (add-to-list 'load-path +emacs-lib-dir+)
