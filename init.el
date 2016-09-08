@@ -7,6 +7,7 @@
 (defconst +emacs-snippets-dir+ (concat +emacs-dir+ "/snippets"))
 
 (custom-set-variables
+ '(tool-bar-mode nil)
  '(menu-bar-mode nil))
 
 (custom-set-faces
@@ -19,10 +20,12 @@
 
 ;; Javascript shaningans
 (require 'comint);
+;(defconst +node-cmd+ "node")
+(defconst +node-cmd+ "/usr/local/bin/node")
 (defun run-js ()
   "Execute the current buffer in node"
   (interactive)
-  (pop-to-buffer (make-comint "run-js" "node" nil "--interactive" buffer-file-name)))
+  (pop-to-buffer (make-comint "run-js" +node-cmd+ nil "--interactive" buffer-file-name)))
 
 ;; Theme
 (add-to-list 'custom-theme-load-path (concat +emacs-dir+ "/themes"))
@@ -45,3 +48,11 @@
 ;; js2-mode
 (add-to-list 'load-path (concat +emacs-lib-dir+ "/js2-mode"))
 (require 'js2-mode)
+
+
+;; ---
+(font-lock-add-keywords
+ 'js2-mode `(("\\(function\\) *("
+	      (0 (progn (compose-region (match-beginning 1)
+					(match-end 1) "\u0192")
+			nil)))))
