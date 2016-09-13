@@ -16,3 +16,6 @@
 [submodule "plugins/org-mode"]
 	path = plugins/org-mode
 	url = git://orgmode.org/org-mode.git
+[submodule "plugins/multiple-cursors.el"]
+	path = plugins/multiple-cursors.el
+	url = https://github.com/magnars/multiple-cursors.el

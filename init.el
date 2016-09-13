@@ -14,6 +14,8 @@
 (custom-set-faces
  )
 
+(setq-default indent-tabs-mode nil) ;; Indent using only spaces.
+
 ;; Backups
 ; Reference: https://www.emacswiki.org/emacs/ForceBackups
 (setq vc-make-backup-files t)
@@ -50,6 +52,18 @@
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 
+;; Multiple-cursors
+(add-to-list 'load-path (concat +emacs-lib-dir+ "/multiple-cursors.el"))
+(require 'multiple-cursors)
+
+; When you have an active region that spans multiple lines, the following will add a cursor to each line
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+; When you want to add multiple cursors not based on continuous lines, but based on keywords in the buffer, use
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c C->") 'mc/mark-next-word-like-this)
+
 ;; Javascript shaningans
 (require 'comint);
 ;(defconst +node-cmd+ "node")
@@ -80,7 +94,7 @@
 ;; js2-mode
 (add-to-list 'load-path (concat +emacs-lib-dir+ "/js2-mode"))
 (require 'js2-mode)
-
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;; ---
 (font-lock-add-keywords
